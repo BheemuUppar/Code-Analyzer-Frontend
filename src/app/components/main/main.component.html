@@ -22,8 +22,11 @@
   }
 
   <!-- Code Analysis Results (always shown) -->
-  <div class="max-w-6xl mx-auto bg-gray-800 p-6 rounded-xl shadow border border-gray-700">
-    <app-result [codeAnalysis]="codeAnalysis"></app-result>
-  </div>
+   @if(codeAnalysis.length > 0){
+
+     <div class="max-w-6xl mx-auto bg-gray-800 p-6 rounded-xl shadow border border-gray-700">
+       <app-result [codeAnalysis]="codeAnalysis"></app-result>
+     </div>
+   }
 
 </div>
