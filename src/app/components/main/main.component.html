@@ -1,0 +1,29 @@
+<div class="bg-gray-900 text-white min-h-screen py-10 px-4 md:px-8 space-y-12">
+
+  <!-- Check if projectMetaData exists -->
+  @if (projectMetaData) {
+    <!-- Grid layout: Upload + Project Metadata -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      <!-- Upload -->
+      <div class="bg-gray-800 p-6 rounded-xl shadow border border-gray-700">
+        <app-upload (apiResponse)="onDataReceive($event)"></app-upload>
+      </div>
+
+      <!-- Project Metadata -->
+      <div class="bg-gray-800 p-6 rounded-xl shadow border border-gray-700">
+        <app-project-data [projectMetaData]="projectMetaData"></app-project-data>
+      </div>
+    </div>
+  } @else {
+    <!-- Upload full-width if no metadata -->
+    <div class="max-w-4xl mx-auto bg-gray-800 p-6 rounded-xl shadow border border-gray-700">
+      <app-upload (apiResponse)="onDataReceive($event)"></app-upload>
+    </div>
+  }
+
+  <!-- Code Analysis Results (always shown) -->
+  <div class="max-w-6xl mx-auto bg-gray-800 p-6 rounded-xl shadow border border-gray-700">
+    <app-result [codeAnalysis]="codeAnalysis"></app-result>
+  </div>
+
+</div>

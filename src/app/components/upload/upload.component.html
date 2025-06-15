@@ -1,0 +1,50 @@
+<section
+  class="max-w-3xl mx-auto mt-10 bg-gray-900 text-white p-6 border border-gray-700 rounded-xl shadow"
+>
+  <h2 class="text-xl font-bold mb-4">Upload Code</h2>
+  <div class="flex gap-4 items-center flex-wrap">
+    <!-- Drop Zone -->
+    <div
+      class="w-full bg-gray-800 flex flex-col items-center justify-center border-2 border-gray-600 rounded-lg p-6 cursor-pointer transition drop-zone"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onDrop($event)"
+      [class.dragging]="isDragging"
+    >
+      @if(file == null){
+      <p class="text-center text-slate-300">
+        Drag & drop a ZIP file here,<br />or click to upload
+      </p>
+      } @else{
+      <h4 class="text-white">{{ file.name }}</h4>
+      <button
+        class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-md shadow mt-5"
+        (click)="file = null"
+      >
+        Clear
+      </button>
+      }
+      <input type="file" id="fileInput" accept=".zip" hidden />
+    </div>
+
+    <h1 class="text-2xl text-slate-400 text-center w-full">OR</h1>
+
+    <!-- GitHub URL Input -->
+    <div class="w-full gap-2">
+      <input
+        type="text"
+        placeholder="Paste GitHub repository URL"
+        [disabled]="file != null"
+        class="bg-gray-700 border border-gray-600 p-2 rounded-md w-full placeholder-slate-400 disabled:cursor-not-allowed text-white"
+        [(ngModel)]="githubUrl"
+      />
+    </div>
+
+    <!-- Analyze Button -->
+    <div class="w-full flex justify-center mt-4">
+      <button class="bg-yellow-500 hover:bg-yellow-600 transition text-white px-6 py-2 rounded-md shadow" (click)="onFileUpload()">
+        Analyze
+      </button>
+    </div>
+  </div>
+</section>

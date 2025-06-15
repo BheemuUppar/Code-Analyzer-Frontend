@@ -1,0 +1,23 @@
+
+::ng-deep .custom-expansion .mat-expansion-panel {
+  background-color: #1f2937 !important; /* Tailwind's gray-800 */
+  color: white;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid #334155; /* slate-700 */
+}
+
+::ng-deep .custom-expansion .mat-expansion-panel-header.mat-expanded {
+  background-color: #1e293b !important; /* darken on expand */
+
+}
+
+::ng-deep .custom-expansion .mat-expansion-panel-header {
+  color: white;
+  padding: 16px;
+  font-weight: 500;
+}
+
+
+
+
