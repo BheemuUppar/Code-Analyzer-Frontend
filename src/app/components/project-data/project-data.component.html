@@ -1,4 +1,4 @@
- @if(projectMetaData){
+ @if(service.projectMetaData){
    <section  class="max-w-3xl mx-auto mt-10 bg-gray-900 text-white p-6 rounded-xl shadow border border-gray-700">
     <h2 class="text-2xl font-bold text-yellow-400 mb-4">Project Metadata</h2>
   
@@ -7,13 +7,13 @@
       <!-- Project Name -->
       <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
         <h3 class="text-lg font-semibold text-yellow-300">Project Name</h3>
-        <p class="text-slate-300 mt-1">{{ projectMetaData.probableProjectName }}</p>
+        <p class="text-slate-300 mt-1">{{ service.projectMetaData.probableProjectName }}</p>
       </div>
   
       <!-- Project Type -->
       <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
         <h3 class="text-lg font-semibold text-yellow-300">Project Type</h3>
-        <p class="text-slate-300 mt-1">{{ projectMetaData.projectType }}</p>
+        <p class="text-slate-300 mt-1">{{ service.projectMetaData.projectType }}</p>
       </div>
   
       <!-- Technologies Used -->
@@ -21,7 +21,7 @@
         <h3 class="text-lg font-semibold text-yellow-300 mb-2">Technologies Used</h3>
         <div class="flex flex-wrap gap-2">
           <span
-            *ngFor="let tech of projectMetaData.technologiesUsed"
+            *ngFor="let tech of service.projectMetaData.technologiesUsed"
             class="bg-gray-700 text-white text-sm px-3 py-1 rounded-full border border-yellow-500"
           >
             {{ tech }}
@@ -33,7 +33,7 @@
       <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
         <h3 class="text-lg font-semibold text-yellow-300">Project Purpose</h3>
         <p class="text-slate-300 mt-1">
-          {{ projectMetaData.projectPurpose }}
+          {{ service.projectMetaData.projectPurpose }}
         </p>
       </div>
   

@@ -23,10 +23,10 @@ export class MainComponent {
   codeAnalysis: any[] = [];
   projectMetaData: any = undefined;
 
-  constructor() {}
+  constructor(public service:ApiService) {}
 
   onDataReceive(event: any) {
-    this.codeAnalysis = event?.codeAnalysis;
-    this.projectMetaData = event?.projectMetaData;
+    // this.codeAnalysis = event?.codeAnalysis;
+    // this.projectMetaData = event?.projectMetaData;
   }
 }

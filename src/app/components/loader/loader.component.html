@@ -1,0 +1,19 @@
+@if(service.currentStatus) {
+  <div class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center">
+    <div class="flex flex-col items-center gap-6">
+
+      <!-- Glowing AI orb -->
+      <div class="relative w-24 h-24">
+        <div class="absolute inset-0 border-4 border-cyan-500 rounded-full animate-spin"></div>
+        <div class="absolute inset-4 border-2 border-cyan-400 rounded-full animate-ping"></div>
+        <div class="absolute inset-8 bg-cyan-300 rounded-full blur-lg opacity-30"></div>
+      </div>
+
+      <!-- Typing Effect Text -->
+      <div class="text-cyan-300 text-lg font-mono">
+        <span>{{ service.currentStatus }}</span><span class="ml-1 animate-pulse">|</span>
+      </div>
+
+    </div>
+  </div>
+}

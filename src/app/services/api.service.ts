@@ -7,8 +7,13 @@ import { Observable, of } from 'rxjs';
 })
 export class ApiService {
 
-  uploadZip ='http://localhost:3000/analysCode/zipFile';
- remoteUrl = ' http://localhost:3000/analysCode/remoteRepo'
+ uploadZip ='http://localhost:3000/analysCode/zipFile';
+ remoteUrl = ' http://localhost:3000/analysCode/remoteRepo';
+  codeAnalysis :any  = [];
+  projectMetaData : any = undefined;
+
+  currentStatus :string |undefined = undefined;
+  
   constructor(private http:HttpClient) { }
 
   analyzeCode(file: File | null, repoUrl: string | null): Observable<any> {

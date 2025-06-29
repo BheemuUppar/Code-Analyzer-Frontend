@@ -1,7 +1,7 @@
 <div class="bg-gray-900 text-white min-h-screen py-10 px-4 md:px-8 space-y-12">
 
   <!-- Check if projectMetaData exists -->
-  @if (projectMetaData) {
+  @if (service.projectMetaData) {
     <!-- Grid layout: Upload + Project Metadata -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
       <!-- Upload -->
@@ -11,7 +11,7 @@
 
       <!-- Project Metadata -->
       <div class="bg-gray-800 p-6 rounded-xl shadow border border-gray-700">
-        <app-project-data [projectMetaData]="projectMetaData"></app-project-data>
+        <app-project-data ></app-project-data>
       </div>
     </div>
   } @else {
@@ -22,10 +22,9 @@
   }
 
   <!-- Code Analysis Results (always shown) -->
-   @if(codeAnalysis.length > 0){
-
-     <div class="max-w-6xl mx-auto bg-gray-800 p-6 rounded-xl shadow border border-gray-700">
-       <app-result [codeAnalysis]="codeAnalysis"></app-result>
+   @if( service.codeAnalysis && service.codeAnalysis.length > 0){
+   <div class="max-w-6xl mx-auto bg-gray-800 p-6 rounded-xl shadow border border-gray-700">
+       <app-result ></app-result>
      </div>
    }
 

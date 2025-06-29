@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-project-data',
@@ -8,5 +9,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './project-data.component.css'
 })
 export class ProjectDataComponent {
- @Input() projectMetaData :any = undefined
+ constructor(public service:ApiService){}
 }

@@ -1,7 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { SocketService } from '../../services/socket.service';
 
 @Component({
   selector: 'app-upload',
@@ -13,19 +14,18 @@ export class UploadComponent {
   isDragging = false;
   file: File | null = null;
   githubUrl: string | null = null;
+  @ViewChild('fileInputRef') fileInputRef!: ElementRef<HTMLInputElement>;
 
   @Output() apiResponse = new EventEmitter<any>()
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private socketService:SocketService) {}
   onDragOver(event: DragEvent) {
     event.preventDefault();
-    console.log('OVER ', event);
     this.isDragging = true;
   }
 
   onDragLeave(event: DragEvent) {
     event.preventDefault();
-    console.log('LEAVE ', event);
     this.isDragging = false;
   }
 
@@ -36,8 +36,6 @@ export class UploadComponent {
     const items = event.dataTransfer?.items;
     const files = event.dataTransfer?.files;
 
-    console.log('}Dropped Items:', items);
-    console.log('Dropped Files:', files);
 
     if (files && files.length > 0) {
       this.file = files[0];
@@ -52,8 +50,12 @@ export class UploadComponent {
       this.file = input.files[0];
     }
   }
-
+ triggerFileSelect() {
+    this.fileInputRef.nativeElement.click();
+  }
   onFileUpload() {
+    
+
     if (this.file) {
       const formData: any = new FormData();
       formData.append('zipFile', this.file); // File from file input
@@ -63,9 +65,12 @@ export class UploadComponent {
         .subscribe((res: any) => {
           this.file = null;
           this.githubUrl = null;
+           this.apiService.codeAnalysis = [];
+            this.apiService.projectMetaData = undefined;
           //  this.codeAnalysis = res?.codeAnalysis;
           //  this.projectMetaData = res?.projectMetaData;
-          this.apiResponse.emit(res)
+          this.socketService.registerJob(res.id)
+          // this.apiResponse.emit(res)
         });
     } else if (this.githubUrl) {
       this.apiService
@@ -73,13 +78,16 @@ export class UploadComponent {
         .subscribe((res: any) => {
           this.file = null;
           this.githubUrl = null;
+           this.apiService.codeAnalysis = [];
+          this.apiService.projectMetaData = undefined;
           //  this.codeAnalysis = res?.codeAnalysis;
           //  this.projectMetaData = res?.projectMetaData;
-          console.log(res)
-          this.apiResponse.emit(res)
+          this.socketService.registerJob(res.id);
+          // this.apiResponse.emit(res)
         });
     } else {
       alert('There is no File/Url Found');
     }
+   
   }
 }

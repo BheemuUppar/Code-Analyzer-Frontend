@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-result',
@@ -10,5 +11,5 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './result.component.css'
 })
 export class ResultComponent {
- @Input() codeAnalysis: any[] = [];
+ constructor(public service:ApiService){}
 }
