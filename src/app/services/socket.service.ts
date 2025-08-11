@@ -38,6 +38,7 @@ initializeConnection(){
       this.apiService.codeAnalysis = data.data.codeAnalysis.sort((a:any, b:any) => {
         return this.severityOrder[a.severity] - this.severityOrder[b.severity];
       });
+      this.apiService.calculateSeverityCounts(this.apiService.codeAnalysis);
       this.apiService.currentStatus = undefined;
     this.apiService.projectMetaData = data.data.projectMetaData;
 

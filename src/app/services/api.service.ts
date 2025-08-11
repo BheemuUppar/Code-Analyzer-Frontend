@@ -11,9 +11,13 @@ export class ApiService {
  remoteUrl = ' http://localhost:3000/analysCode/remoteRepo';
   codeAnalysis :any  = [];
   projectMetaData : any = undefined;
-
+   severitydata : {high:number, medium:number, low:number} = {
+    high: 0,
+    medium: 0,
+    low: 0
+  }
   currentStatus :string |undefined = undefined;
-  
+ 
   constructor(private http:HttpClient) { }
 
   analyzeCode(file: File | null, repoUrl: string | null): Observable<any> {
@@ -32,5 +36,18 @@ export class ApiService {
    return of('')
   }
 
+  calculateSeverityCounts(issues: any[]): void {
+    this.severitydata = { high: 0, medium: 0, low: 0 };
+
+    issues.forEach(issue => {
+      if (issue.severity === 'High') {
+        this.severitydata.high++;
+      } else if (issue.severity === 'Medium') {
+        this.severitydata.medium++;
+      } else if (issue.severity === 'Low') {
+        this.severitydata.low++;
+      }
+    });
+  }
 
 }
