@@ -14,13 +14,13 @@
     >
       @if(file == null){
       <p class="text-center text-slate-300">
-        Drag & drop a ZIP file here,<br />or click to upload
+        Drag & drop a ZIP file here,<br /> OR <br> Click to upload
       </p>
       } @else{
       <h4 class="text-white">{{ file.name }}</h4>
       <button
         class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-md shadow mt-5"
-        (click)="file = null"
+        (click)="clear($event)"
       >
         Clear
       </button>
@@ -34,7 +34,7 @@
     <div class="w-full gap-2">
       <input
         type="text"
-        placeholder="Paste GitHub repository URL"
+        placeholder="Paste github repository URL"
         [disabled]="file != null"
         class="bg-gray-700 border border-gray-600 p-2 rounded-md w-full placeholder-slate-400 disabled:cursor-not-allowed text-white"
         [(ngModel)]="githubUrl"

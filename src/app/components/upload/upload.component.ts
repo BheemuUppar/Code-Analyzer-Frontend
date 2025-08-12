@@ -90,4 +90,12 @@ export class UploadComponent {
     }
    
   }
+
+  clear(event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.file = null;
+    this.githubUrl = null;
+    this.fileInputRef.nativeElement.value = '';
+  }
 }

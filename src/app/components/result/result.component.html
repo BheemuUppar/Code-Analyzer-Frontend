@@ -1,52 +1,73 @@
-<section class=" mx-auto mt-10 bg-gray-900 text-white p-6 rounded-xl shadow border border-gray-700">
- 
+<section
+  class="mx-auto mt-10 bg-gray-900 text-white p-6 rounded-xl shadow border border-gray-700"
+>
   <div class="flex items-between w-full">
     <h2 class="text-2xl font-bold mb-4 grow">Code Analysis Results</h2>
     <div class="flex items-center gap-2 mb-4">
-      <span class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 inset-ring inset-ring-red-600/10"> {{service.severitydata.high}} High</span>
-      <span class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 inset-ring inset-ring-yellow-600/20">{{service.severitydata.medium}} Medium</span>
-      <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 inset-ring inset-ring-green-600/20">{{service.severitydata.low}} Low</span>
+      <span
+        class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 inset-ring inset-ring-red-600/10"
+      >
+        {{ service.severitydata.high }} High</span
+      >
+      <span
+        class="inline-flex items-center rounded-md bg-yellow-50 px-2 py-1 text-xs font-medium text-yellow-800 inset-ring inset-ring-yellow-600/20"
+        >{{ service.severitydata.medium }} Medium</span
+      >
+      <span
+        class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 inset-ring inset-ring-green-600/20"
+        >{{ service.severitydata.low }} Low</span
+      >
     </div>
   </div>
- 
 
   <mat-accordion class="custom-expansion">
     @for(issue of service.codeAnalysis; track issue){
-  <mat-expansion-panel>
+    <mat-expansion-panel>
       <mat-expansion-panel-header class="!bg-gray-800 rounded-md">
         <mat-panel-title class="text-white">
-          <p class="text-sm text-slate-300 font-medium">{{issue.file}}</p>
+          <p class="text-sm text-slate-300 font-medium">{{ issue.file }}</p>
         </mat-panel-title>
-        <mat-panel-description class=" text-white flex items-center gap-2 justify-between">
-          <p class="text-sm text-white">{{issue.issueName}}</p>
-          <span class="text-white px-2 py-1 text-xs rounded" [class.bg-yellow-600]="issue.severity == 'Medium'" [class.bg-green-600]="issue.severity == 'Low'" [class.bg-red-600]="issue.severity == 'High'">{{issue.severity}}</span>
+        <mat-panel-description
+          class="text-white flex items-center gap-2 justify-between"
+        >
+          <p class="text-sm text-white">{{ issue.issueName }}</p>
+          <span
+            class="text-white px-2 py-1 text-xs rounded"
+            [class.bg-yellow-600]="issue.severity == 'Medium'"
+            [class.bg-green-600]="issue.severity == 'Low'"
+            [class.bg-red-600]="issue.severity == 'High'"
+            >{{ issue.severity }}</span
+          >
         </mat-panel-description>
       </mat-expansion-panel-header>
 
       <div class="text-sm text-slate-300 space-y-3 pt-2">
-        <p><strong>Issue:</strong>{{issue.issue}} </p>
+        <p><strong>Issue:</strong> &nbsp; {{ issue.issue }}</p>
 
         <div>
-          <strong>Original code:</strong>
-          <pre class="bg-gray-700 text-slate-200 px-3 py-2 rounded mt-1 overflow-x-auto">
-              {{issue.originalCode}}
+          <strong>Original code:</strong>&nbsp;
+          <pre
+            class="bg-black text-slate-200 px-3 py-2 rounded mt-1 overflow-x-auto"
+          >
+              {{ issue.originalCode }}
           </pre>
         </div>
 
         <div>
-          <strong>Suggested fix:</strong>
-          <pre class="bg-gray-700 text-slate-200 px-3 py-2 rounded mt-1 overflow-x-auto">
-{{issue.suggestedFix}}
- </pre>
+          <strong>Suggested fix:</strong>&nbsp;
+          <pre
+            class="bg-black text-slate-200 px-3 py-2 rounded mt-1 overflow-x-auto"
+            >{{ issue.suggestedFix }}
+ </pre
+          >
         </div>
 
         <p>
-          <strong>Explanation:</strong> 
-          {{issue.explanation}}
+          <strong>Explanation:</strong> &nbsp;
+          {{ issue.explanation }}
         </p>
       </div>
     </mat-expansion-panel>
     }
-  
   </mat-accordion>
 </section>
