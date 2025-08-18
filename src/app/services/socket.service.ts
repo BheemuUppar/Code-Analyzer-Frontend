@@ -3,6 +3,7 @@ import { io, Socket } from 'socket.io-client';
 
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -21,11 +22,15 @@ export class SocketService {
   }
 
 initializeConnection(){
-  this.socket = io('http://localhost:3000',  // your backend URL
+  this.socket = io(environment.socketUrl,  // your backend URL
     {
  });
   this.socket.on('connect', ()=>{
-    alert("socket connected...");
+    // alert("socket connected...");
+    
+  })
+  this.socket.on('disconnect', ()=>{
+    this.apiService.currentStatus = undefined;
     
   })
   

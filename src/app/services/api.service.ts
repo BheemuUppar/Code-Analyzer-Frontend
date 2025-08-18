@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
- uploadZip ='http://localhost:3000/analysCode/zipFile';
- remoteUrl = ' http://localhost:3000/analysCode/remoteRepo';
+ uploadZip = environment.uploadZip;
+ remoteUrl = environment.remoteUrl;
   codeAnalysis :any  = [];
   projectMetaData : any = undefined;
    severitydata : {high:number, medium:number, low:number} = {
