@@ -16,8 +16,15 @@
   color: white;
   padding: 16px;
   font-weight: 500;
+  height: fit-content;
 }
-
+::ng-deep .mat-content {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    /* flex-direction: row; */
+    /* overflow: hidden; */
+}
 
 
 

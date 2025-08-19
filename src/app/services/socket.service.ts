@@ -40,12 +40,14 @@ initializeConnection(){
   })
 
     this.socket.on('completed', (data)=>{
-      this.apiService.codeAnalysis = data.data.codeAnalysis.sort((a:any, b:any) => {
+      console.log('Job completed:', JSON.parse(data.data) );
+      data = JSON.parse(data.data);
+      this.apiService.codeAnalysis = data.codeAnalysis.sort((a:any, b:any) => {
         return this.severityOrder[a.severity] - this.severityOrder[b.severity];
       });
       this.apiService.calculateSeverityCounts(this.apiService.codeAnalysis);
       this.apiService.currentStatus = undefined;
-    this.apiService.projectMetaData = data.data.projectMetaData;
+    this.apiService.projectMetaData = data.projectMetaData;
 
   })
   

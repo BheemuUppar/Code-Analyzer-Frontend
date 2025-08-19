@@ -59,6 +59,7 @@ export class UploadComponent {
     if (this.file) {
       const formData: any = new FormData();
       formData.append('zipFile', this.file); // File from file input
+      this.apiService.currentStatus = 'Uploading Files'
 
       this.apiService
         .analyzeCode(this.file, this.githubUrl)
@@ -71,8 +72,13 @@ export class UploadComponent {
           //  this.projectMetaData = res?.projectMetaData;
           this.socketService.registerJob(res.id)
           // this.apiResponse.emit(res)
+        },
+        (error: any) => {
+          console.error('Error during file upload:', error);
+         this.apiService.currentStatus = undefined
         });
     } else if (this.githubUrl) {
+      this.apiService.currentStatus = 'fetching file from github'
       this.apiService
         .analyzeCode(this.file, this.githubUrl)
         .subscribe((res: any) => {
@@ -84,7 +90,12 @@ export class UploadComponent {
           //  this.projectMetaData = res?.projectMetaData;
           this.socketService.registerJob(res.id);
           // this.apiResponse.emit(res)
-        });
+        },
+       (error: any) => {
+          console.error('Error during fething file from github:', error);
+         this.apiService.currentStatus = undefined
+        }
+      );
     } else {
       alert('There is no File/Url Found');
     }

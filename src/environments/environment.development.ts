@@ -1,6 +1,8 @@
+
+
 export const environment = {
-     uploadZip : 'http://localhost:3000/analysCode/zipFile',
-     remoteUrl : ' http://localhost:3000/analysCode/remoteRepo',
-     socketUrl: 'http://localhost:3000', 
+     uploadZip : 'https://qjjdkxfz-3000.inc1.devtunnels.ms/analysCode/zipFile',
+     remoteUrl : ' https://qjjdkxfz-3000.inc1.devtunnels.ms/analysCode/remoteRepo',
+     socketUrl: 'https://qjjdkxfz-3000.inc1.devtunnels.ms/', 
      production: false
 };
