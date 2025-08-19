@@ -12,10 +12,11 @@ export class ApiService {
  remoteUrl = environment.remoteUrl;
   codeAnalysis :any  = [];
   projectMetaData : any = undefined;
-   severitydata : {high:number, medium:number, low:number} = {
+   severitydata : {high:number, medium:number, low:number, critical:number} = {
     high: 0,
     medium: 0,
-    low: 0
+    low: 0,
+    critical: 0,
   }
   currentStatus :string |undefined = undefined;
  
@@ -38,7 +39,7 @@ export class ApiService {
   }
 
   calculateSeverityCounts(issues: any[]): void {
-    this.severitydata = { high: 0, medium: 0, low: 0 };
+    this.severitydata = { high: 0, medium: 0, low: 0, critical: 0 };
 
     issues.forEach(issue => {
       if (issue.severity === 'High') {
@@ -47,6 +48,9 @@ export class ApiService {
         this.severitydata.medium++;
       } else if (issue.severity === 'Low') {
         this.severitydata.low++;
+      }
+      else if (issue.severity === 'Critical') {
+        this.severitydata.critical++;
       }
     });
   }
