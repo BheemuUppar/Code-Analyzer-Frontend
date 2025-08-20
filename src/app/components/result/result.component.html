@@ -5,7 +5,12 @@
     <h2 class="text-2xl font-bold mb-4 grow">Code Analysis Results</h2>
     <div class="flex items-center gap-2 mb-4">
       <span
-        class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 inset-ring inset-ring-red-600/10"
+        class="inline-flex items-center rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-900 inset-ring inset-ring-red-600/10"
+      >
+        {{ service.severitydata.critical }} Critical</span
+      >
+      <span
+        class="inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-600 inset-ring inset-ring-red-600/10"
       >
         {{ service.severitydata.high }} High</span
       >
@@ -36,6 +41,7 @@
             [class.bg-yellow-600]="issue.severity == 'Medium'"
             [class.bg-green-600]="issue.severity == 'Low'"
             [class.bg-red-600]="issue.severity == 'High'"
+            [class.bg-red-900]="issue.severity == 'Critical'"
             >{{ issue.severity }}</span
           >
         </mat-panel-description>
