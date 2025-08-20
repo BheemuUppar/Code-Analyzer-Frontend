@@ -46,7 +46,15 @@
                   "maximumError": "8kB"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "fileReplacements": [
+              {
+                "replace": "src/environments/environment.development.ts",
+                "with": "src/environments/environment.ts"
+              }
+            ],
+            "optimization": true,
+            "aot": true
             },
             "development": {
               "optimization": false,

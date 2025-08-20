@@ -1,8 +1,9 @@
 
-
+let baseUrl = 'https://code-analyser-backend-yb9t.onrender.com'
+// let baseUrl = 'https://qjjdkxfz-3000.inc1.devtunnels.ms'
 export const environment = {
-     uploadZip : 'https://qjjdkxfz-3000.inc1.devtunnels.ms/analysCode/zipFile',
-     remoteUrl : ' https://qjjdkxfz-3000.inc1.devtunnels.ms/analysCode/remoteRepo',
-     socketUrl: 'https://qjjdkxfz-3000.inc1.devtunnels.ms/', 
+     uploadZip : baseUrl + '/analysCode/zipFile',
+     remoteUrl : baseUrl +'/analysCode/remoteRepo',
+     socketUrl: baseUrl +'/', 
      production: false
 };
